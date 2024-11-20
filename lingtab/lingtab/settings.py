@@ -12,7 +12,6 @@ DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sid.local', 'ling.cambridgelogic.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [
