@@ -19,10 +19,10 @@ services:
       - DEBUG=${DEBUG}
       - PORT=${PORT}
     depends_on:
-      - db
+      - lingtab-db
 
-  db:
-    container_name: db
+  lingtab-db:
+    container_name: lingtab-db
     image: postgres
     volumes:
       - dev-db-data:/var/lib/postgresql/data
