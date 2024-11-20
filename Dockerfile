@@ -47,6 +47,8 @@ RUN python -m venv /py && \
     /py/bin/pip install -r /tmp/requirements.dev.txt; \
     fi
 
+RUN npm install rimraf --save-dev;
+
 # Add the virtual environment to the PATH
 ENV PATH="/py/bin:$PATH"
 
