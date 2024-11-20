@@ -10,7 +10,7 @@ SECRET_KEY = "django-insecure-7_p3r$2wz0aeb+-gr)za%=6pw)s@7n1hita^x!+p*x!z0a2(jp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sid.local']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sid.local', 'ling.cambridgelogic.com']
 
 
 # Application definition
