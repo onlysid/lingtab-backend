@@ -19,7 +19,7 @@ services:
       - DEBUG=${DEBUG}
       - PORT=${PORT}
     depends_on:
-      - db
+      - lingtab-db
 
   lingtab-db:
     container_name: lingtab-db
