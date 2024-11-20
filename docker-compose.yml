@@ -43,6 +43,19 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin
 
+  lingtab-tailwind:
+    container_name: lingtab_tailwind
+    build:
+      context: .
+      args:
+        DEBUG: ${DEBUG}
+        PORT: ${PORT}
+    volumes:
+      - ./lingtab:/lingtab
+      - dev-static-data:/vol/web
+    command: python manage.py tailwind start
+    tty: true
+
 
 volumes:
   dev-db-data:

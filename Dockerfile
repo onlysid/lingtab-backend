@@ -51,11 +51,13 @@ RUN python -m venv /py && \
 ENV PATH="/py/bin:$PATH"
 
 # Separate command for Tailwind in development mode
-RUN python manage.py tailwind install
+RUN python manage.py tailwind install --no-input
 
 CMD bash -c 'python manage.py migrate && \
     if [ "$DEBUG" = "true" ]; then \
     python manage.py runserver 0.0.0.0:$PORT; \
     else \
+    python manage.py tailwind build --no-input && \
+    python manage.py collectstatic --noinput && \
     gunicorn lingtab.wsgi:application --timeout=120 --workers=3 -b 0.0.0.0:$PORT; \
     fi'
