@@ -11,6 +11,7 @@ SECRET_KEY = "django-insecure-7_p3r$2wz0aeb+-gr)za%=6pw)s@7n1hita^x!+p*x!z0a2(jp
 DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'sid.local', 'lingtab.cambridgelogic.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.lingtab.cambridgelogic.com','https://*.127.0.0.1', 'http://*.lingtab.cambridgelogic.com','http://*.127.0.0.1']
 
 # Application definition
 
