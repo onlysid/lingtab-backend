@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div id="loginPage">
+        <h1>Login</h1>
+        <div class="login-page-wrapper">
+
+            <h1>TOM Licensing</h1>
+
+            <div class="login-form-wrapper">
+                <div class="login-form-blur"></div>
+
+                <div class="login-form">
+                    <form class="mb-3" method="POST">
+                        {% csrf_token %}
+                        <div class="form-fields">
+                            <div class="input-wrapper">
+                                <input type="text" name="username" placeholder="Username" autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username">
+                            </div>
+                            <input type="hidden" name="action" value="login">
+                            <div class="input-wrapper">
+                                <input type="password" name="password" autocomplete="current-password" required="" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="login-button">
+                            <button type="submit">Login</button>
+                        </div>
+
+                        {% if form.non_field_errors %}
+                            <div class="form-error">
+                                {{form.non_field_errors}}
+                            </div>
+                        {% endif %}
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

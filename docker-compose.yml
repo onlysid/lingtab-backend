@@ -1,0 +1,50 @@
+services:
+  backend:
+    container_name: lingtab-backend
+    build:
+      context: .
+      args:
+        DEBUG: ${DEBUG}
+        PORT: ${PORT}
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./lingtab:/lingtab
+      - dev-static-data:/vol/web
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DEBUG=${DEBUG}
+      - PORT=${PORT}
+    depends_on:
+      - db
+
+  db:
+    container_name: lingtab-db
+    image: postgres
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+
+  pgadmin:
+    container_name: lingtab-pgadmin
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - "8889:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: sid@onlysid.com
+      PGADMIN_DEFAULT_PASSWORD: changeme
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+
+volumes:
+  dev-db-data:
+  pgadmin-data:
+  dev-static-data:

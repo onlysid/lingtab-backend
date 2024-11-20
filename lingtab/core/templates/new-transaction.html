@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>New Transaction</h1>
+<a href="/">Back</a>
+<div class="container mt-5">
+    <h2>{{ form.instance.pk|default:"Create" }} Transaction</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+{% endblock content %}
