@@ -1,5 +1,5 @@
 services:
-  backend:
+  lingtab-backend:
     container_name: lingtab-backend
     build:
       context: .
@@ -21,7 +21,7 @@ services:
     depends_on:
       - db
 
-  db:
+  lingtab-db:
     container_name: lingtab-db
     image: postgres
     volumes:
@@ -31,7 +31,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
 
-  pgadmin:
+  lingtab-pgadmin:
     container_name: lingtab-pgadmin
     image: dpage/pgadmin4
     restart: always
