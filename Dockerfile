@@ -58,7 +58,7 @@ CMD bash -c 'python manage.py migrate && \
     python manage.py runserver 0.0.0.0:$PORT; \
     wait -n; \
     else \
-    npm install -g rimraf && \
+    npm install -g rimraf cross-env && \
     python manage.py tailwind build && \
     python manage.py collectstatic --noinput && \
     gunicorn lingtab.wsgi:application --timeout=120 --workers=3 -b 0.0.0.0:$PORT; \
