@@ -56,7 +56,6 @@ RUN python manage.py tailwind install
 CMD bash -c 'python manage.py migrate && \
     if [ "$DEBUG" = "true" ]; then \
     python manage.py runserver 0.0.0.0:$PORT; \
-    wait -n; \
     else \
     npm install -g rimraf cross-env tailwindcss && \
     python manage.py tailwind build && \
