@@ -23,7 +23,7 @@ services:
 
   lingtab-db:
     container_name: lingtab-db
-    image: postgres
+    image: postgres:16
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
