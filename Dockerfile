@@ -51,7 +51,7 @@ RUN python -m venv /py && \
 ENV PATH="/py/bin:$PATH"
 
 # Separate command for Tailwind in development mode
-RUN python manage.py tailwind install --no-input
+RUN python manage.py tailwind install
 
 CMD bash -c 'python manage.py migrate && \
     if [ "$DEBUG" = "true" ]; then \
