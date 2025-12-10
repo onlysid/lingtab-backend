@@ -20,6 +20,8 @@ services:
       - PORT=${PORT}
     depends_on:
       - lingtab-db
+    networks:
+      - lingtab-network
 
   lingtab-db:
     container_name: lingtab-db
@@ -30,6 +32,8 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
+    networks:
+      - lingtab-network
 
   lingtab-pgadmin:
     container_name: lingtab-pgadmin
@@ -42,6 +46,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: changeme
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+    networks:
+      - lingtab-network
 
   lingtab-tailwind:
     container_name: lingtab_tailwind
@@ -56,6 +62,9 @@ services:
     command: python manage.py tailwind start
     tty: true
 
+networks:
+  lingtab-network:
+    external: true
 
 volumes:
   dev-db-data:
