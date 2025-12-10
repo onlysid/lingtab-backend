@@ -21,7 +21,7 @@ services:
     depends_on:
       - lingtab-db
     networks:
-      - lingtab-network
+      - dokploy-network
 
   lingtab-db:
     container_name: lingtab-db
@@ -33,7 +33,7 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASS}
     networks:
-      - lingtab-network
+      - dokploy-network
 
   lingtab-pgadmin:
     container_name: lingtab-pgadmin
@@ -47,7 +47,7 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin
     networks:
-      - lingtab-network
+      - dokploy-network
 
   lingtab-tailwind:
     container_name: lingtab_tailwind
@@ -63,7 +63,7 @@ services:
     tty: true
 
 networks:
-  lingtab-network:
+  dokploy-network:
     external: true
 
 volumes:
