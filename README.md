@@ -17,6 +17,12 @@ To run the app, simply run:
 docker compose up --build
 ```
 
+To run a dev environment, simply run:
+
+```
+docker compose -f "docker-compose.dev.yml" up --build
+```
+
 The env file should have necessary information about the environment. example.env gives an example of what variables are necessary to build the project.
 
 If debug is set to true in the .env file, tailwind will be in development mode. To run tailwind, enter the web container and start it using the following commands:

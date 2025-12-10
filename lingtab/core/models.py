@@ -13,3 +13,6 @@ class Transaction(models.Model):
     def __str__(self):
         status = "Paid" if self.is_paid else "Spent"
         return f"{self.user.username} {status} {self.amount}"
+
+    class Meta:
+        ordering = ['-date']
