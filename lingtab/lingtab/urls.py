@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.urls import include, path
 from rest_framework import routers, serializers, viewsets
 from django.contrib.auth.views import LoginView
+from django.conf import settings
 from core.views import DeleteTransactionView, NewTransaction, TransactionListView
 
 # Serializers define the API representation.
@@ -22,7 +23,6 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("__reload__/", include("django_browser_reload.urls")),
     path("", include('core.urls')),
     path("api-auth/", include('rest_framework.urls')),
     path("api", include(router.urls)),
@@ -31,3 +31,7 @@ urlpatterns = [
     path('transaction/<int:pk>/delete/', DeleteTransactionView.as_view(), name='delete-transaction'),
     path('api/transactions/', TransactionListView.as_view(), name='api-transactions'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += [path("__reload__/", include("django_browser_reload.urls"))]

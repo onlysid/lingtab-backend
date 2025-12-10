@@ -26,7 +26,6 @@ INSTALLED_APPS = [
     "theme",
     "core",
     "rest_framework",
-    "django_browser_reload",
 ]
 
 TAILWIND_APP_NAME = 'theme'
@@ -44,8 +43,11 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
+
+if DEBUG:
+    INSTALLED_APPS += ["django_browser_reload"]
+    MIDDLEWARE.insert(0, "django_browser_reload.middleware.BrowserReloadMiddleware")
 
 # Use whitenoise to deploy staticfiles in production
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
